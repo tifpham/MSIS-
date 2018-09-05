@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/dashboard.css"
+
+      
+    <title>Project Dashboard</title>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      <h1>Project Name</h1>
+      <div class="row">
+        <div class="col placeholder">
+          Completion %
+        </div>
+
+        <section class="col placeholder">
+          <h2> Target Date </h2>
+          <div class="row">
+            <div class="col">
+                <span class="label">Date:</span>
+                <span class="data">11/1/2018</span>
+            </div>
+            <div>
+              <span class="label">Days remaining:</span>
+              <span class="data">17</span>
+
+            </div>
+          </section>
+
+        </section>
+
+        <div class="col placeholder">
+          Status
+        </div>
+      </div> <!-- end row 1, high-level summary information -->
+
+      <div class="row">
+        <div class="col placeholder" style="height:200px">
+          Budget chart goes here.
+        </div>
+        <div class="col placeholder">
+          Burndown chart goes here.
+        </div>
+        <div class="col placeholder">
+          Effort chart goes here.
+        </div>
+      </div> <!-- end row 2, charts -->
+
+      <div class="row">
+        <table id="taskTable" class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>
+                Task
+              </th>
+              <th>
+                Size
+              </th>
+              <th>
+                Team Name
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Create a dashboard
+              </td>
+              <td>
+                L
+              </td>
+              <td>
+                Dancing Foxes
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Build charts
+              </td>
+              <td>
+                M
+              </td>
+              <td>
+                Walled Terrapins
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div> <!-- end row 3, tabular data -->
+    </div>
+    <script> src="js/tablesort.min.js"></script>
+    <script>
+        new Tablesort(document.getElementById('taskTable'));
+    </script>
+  </body>
+</html>
