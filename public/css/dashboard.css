@@ -3,30 +3,22 @@
   border: 2px solid rgb(50, 50, 100);
 }
 
-section,section.placeholder {
-  background-color: white;
-  border: 3px solid rgb(40,100,40)
+section {
+  border: 1px dotted rgb(35, 95, 163);
   text-align:center;
 }
 
-section h2{
-  font-size: 14pt;
-  color:red;
-  text-align:left;
-  text-transform: uppercase;
-}
-
-.data{
-  font-size: 22pt;
-  color: rgb(0,143,0);
-}
-
-.label{
+section h2 {
   font-size: 10pt;
-  color: #ccc
   text-transform: uppercase;
+  color: #999;
 }
 
+section .ban {
+  font-size: 20pt;
+  color: rgb(35, 95, 163);
+  font-weight: bold;
+}
 /**tablesort**/
 
 th[role=columnheader]:not(.no-sort) {
