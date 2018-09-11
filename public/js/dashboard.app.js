@@ -1,14 +1,6 @@
 var dashboardApp = new Vue({
   el: '#dashboard',
   data: {
-    name : "Tapestry",
-    "short_description": "Build a visualization layer for the project dashboard",
-    "start_date" : "2018-07-01",
-    "target_date" : "2018-11-03",
-    "budget" : "4950000",
-    "spent" : "3456700",
-    "projected_spend": "4740500",
-    "weekly_effort_target": 400,
     project: {
       name : '',
       short_description: '',
@@ -37,11 +29,7 @@ var dashboardApp = new Vue({
   },
   computed: {
     days_left: function () {
-      return moment(this.target_date).diff(moment(), 'days');
-    },
-    pretty_target_date: function () {
-      return this.pretty_date(this.target_date)
-      return moment(this.project.target_date).diff(moment(), 'days');
+      return moment(this.project.target_date).diff(moment(), 'days')
     }
   },
   methods: {
@@ -71,25 +59,23 @@ var dashboardApp = new Vue({
       fetch('https://raw.githubusercontent.com/tag/iu-msis/dev/public/p1-tasks.json')
       .then( response => response.json() )
       .then( json => {dashboardApp.tasks = json} )
-      .catch( function(err) {
-        .catch( err => {
-          console.log('TASK FETCH ERROR:');
-          console.log(err);
-        })
-      },
-      fetchProject () {
-        fetch('https://raw.githubusercontent.com/tag/iu-msis/dev/public/project1.json')
-        .then( response => response.json() )
-        .then( json => {dashboardApp.project = json} )
-        .catch( err => {
-          console.log('PROJECT FETCH ERROR:');
-          console.log(err);
-        })
-      }
+      .catch( err => {
+        console.log('TASK FETCH ERROR:');
+        console.log(err);
+      })
     },
-    created () {
-      this.fetchTasks()
-      this.fetchProject();
-      this.fetchTasks();
+    fetchProject () {
+      fetch('https://raw.githubusercontent.com/tag/iu-msis/dev/public/project1.json')
+      .then( response => response.json() )
+      .then( json => {dashboardApp.project = json} )
+      .catch( err => {
+        console.log('PROJECT FETCH ERROR:');
+        console.log(err);
+      })
     }
-  })
+  },
+  created () {
+    this.fetchProject();
+    this.fetchTasks();
+  }
+})

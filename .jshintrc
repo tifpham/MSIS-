@@ -2,9 +2,10 @@
     "asi": true,
     "esversion": 6,
     "strict": "implied",
-    "globals":{
+    "browser": true,
+    "devel": true,
+    "globals": {
       "Vue": true,
       "moment": true
-
     }
 }
