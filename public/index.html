@@ -45,13 +45,13 @@
      <div class="row">
        <section class="col">
          <h2>Spent</h2>
-         <div class="ban">{{ pretty_currency(spent) }}</div>
+      <!--   <div class="ban">{{ pretty_currency(spent) }}</div> -->
          <div class="ban">{{ pretty_currency(project.spent) }}</div>
           <h2>Budget</h2>
-         <div class="ban">{{ pretty_currency(budget) }}</div>
+    <!--     <div class="ban">{{ pretty_currency(budget) }}</div>-->
          <div class="ban">{{ pretty_currency(project.budget) }}</div>
           <h2>Projected Spend</h2>
-         <div class="ban">{{ pretty_currency(projected_spend) }}</div>
+  <!--       <div class="ban">{{ pretty_currency(projected_spend) }}</div> -->
          <div class="ban">{{ pretty_currency(project.projected_spend) }}</div>
        </section>
        <div class="col placeholder" style="height:200px">
@@ -63,7 +63,7 @@
       </div> <!-- end row 2, charts -->
 
       <div class="row">
-        <table id="taskTable" class="table table-striped table-sm">
+        <table id="taskTable" class="table table-striped table-sm table-hover">
           <thead>
             <tr>
               <th>ID</th>
@@ -81,7 +81,8 @@
             <tr v-for="task in tasks"
                 :key="task.id"
                 :id="'task-' + task.id"
-                :class="task.current_sprint ? 'current-sprint' : '' ">
+                :class="task.current_sprint ? 'current-sprint' : '' "
+              @click="gotoTask(task.id)">
               <td>{{ task.id }}</td>
               <td>{{ task.title }}</td>
               <td>{{ task.type }}</td>
