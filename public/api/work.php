@@ -1,7 +1,7 @@
 <?php
 
-require '.../.../app/common.php';
-
+require '../../app/common.php';
+//intval = get integer value of variable,
 $taskId= intval($_GET['taskId'] ?? 0);
 
 if ($taskId <1) {
@@ -12,7 +12,8 @@ if ($taskId <1) {
 $workArr = Work::getAllWorkByTask($taskId);
 
 //2. Convert to JSON
-$json = json_encode($workArr);
+$json = json_encode($workArr, JSON_PRETTY_PRINT);
 
 //3. Print
+header('Content-Type: application/json')
 echo $json;

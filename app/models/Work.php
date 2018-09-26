@@ -5,15 +5,27 @@ class Work
     public $work_id;
     public $team_id;
     public $task_id;
-    public $start_date; //'YYY-MM-DD'
-    public $end_date;   //'YYY-MM-DD'
+    public $start; //'YYY-MM-DD'
+    public $stop;   //'YYY-MM-DD'
     public $hours;
+    public $completion_estimate;
 
-    public function __construct($data){
+    public function __construct($row){
       $this->id = $row['id'];
 
-      $this->start_date = $row['start_date'];
-      $this->end_date = $row['end_date'];
+      $this->task_id = intval($row['taskId']);
+      $this->team_id = intval($row['taskId']);
+
+      $this->team_id = $row['start'];
+      $this->hours = floatval($row['hours']);
+
+      //Calculate stop date
+      $hours = floor ($this->hours);
+      $mins = intval(($this-> hours - $hours) *60); //Take advantage of
+      $interval ='PT'. $hours ? $hours. 'H' : '') . ($mins ? $mins. 'M'
+
+      $date = new DateTime($this ->start);
+      $this ->stop = $date->format('Y-m-d H:i:s');
 
       $this->hours =0;
 
@@ -26,9 +38,27 @@ class Work
       $db = new PDO(DB_SERVER, DB_USER, DB_PW);
       var_dump($db);
 
-      die;
-      //2. Run a query
-      //3. Read the results
+      //2. Prepare query
+      $sql ='SELECT * FROM Work WHERE task_id' ='?';
+
+      $statement = $db ->prepare($sql);
+
+      //3. Run the query
+      $success = $statement->execute(
+        [$task_id]
+      );
+
+      //4. Handle the results
+      $arr = [];
+      while ($row = $statement->fetch(PDO::FETCH_ASSOC)){
+        //4a. For reach row, make a new work object
+        $workItem = new Work($row);
+        array_push($arr, $workItem);
+      }
+        //4b. Return array
+        return $arr;
+
+
       //4. For each row, make a new work object
       //5. return the array of work objects
       return [];
