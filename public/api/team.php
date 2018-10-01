@@ -4,11 +4,6 @@ require '../../common.php';
 
 
 
-
-
-
-
-
 $teams = Team:: getAll();
 
 //2. Convert to JSON
