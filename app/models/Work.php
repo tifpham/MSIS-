@@ -11,7 +11,7 @@ class Work
     public $completion_estimate;
 
     public function __construct($row){
-      $this->id = $row['id'];
+      $this->id = isset($row['id'] ? intval($row['id']) : null;
 
       $this->task_id = intval($row['taskId']);
       $this->team_id = intval($row['taskId']);
@@ -31,6 +31,21 @@ class Work
 
       // TODO: Where should this be calculted? $this->hours = 0;
 
+    }
+
+//create is an instant method not static
+    public function create() {
+      $db = new PDO (DB_SERVER, DB_USER, DB_PW);
+      $sql = 'INSERT INTO Work (task_id, team_id, start_date, hours, completion_estimate)
+              VALUES (?,?,?,?,?)';
+      $statement = $db->prepare(sql);
+      $success = $statement->execute([
+        $this->task_id,
+        $this->team_id,
+        $this->start,
+        $start->hours,
+        $this->comppletion_estimate
+        ]),
     }
 
     public static getAllWorkByTask(int $taskId) {
