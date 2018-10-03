@@ -27,7 +27,7 @@ class Work
       $date = new DateTime($this ->start);
       $this ->stop = $date->format('Y-m-d H:i:s');
 
-      $this->hours =0;
+      $this->completion_estimate = inval($row['completion_estimate']);
 
       // TODO: Where should this be calculted? $this->hours = 0;
 
@@ -38,7 +38,7 @@ class Work
       $db = new PDO (DB_SERVER, DB_USER, DB_PW);
       $sql = 'INSERT INTO Work (task_id, team_id, start_date, hours, completion_estimate)
               VALUES (?,?,?,?,?)';
-      $statement = $db->prepare(sql);
+      $statement = $db->prepare($sql);
       $success = $statement->execute([
         $this->task_id,
         $this->team_id,
@@ -46,9 +46,16 @@ class Work
         $start->hours,
         $this->comppletion_estimate
         ]),
+
+        if(!sucess) {
+          //TODO:Better error handling
+          die ('Bad SQL on insert');
+        }
+
+        $this->id = $db->lastInsertID();
     }
 
-    public static getAllWorkByTask(int $taskId) {
+    public static getAllWorkByTaskId(int $taskId) {
       //1. Connect to the database
       $db = new PDO(DB_SERVER, DB_USER, DB_PW);
       var_dump($db);
