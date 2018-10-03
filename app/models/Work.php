@@ -11,10 +11,10 @@ class Work
     public $completion_estimate;
 
     public function __construct($row){
-      $this->id = isset($row['id'] ? intval($row['id']) : null;
+      $this->id = isset($row['id']) ? intval($row['id']) : null;
 
-      $this->task_id = intval($row['taskId']);
-      $this->team_id = intval($row['taskId']);
+      $this->task_id = intval($row['task_Id']);
+      $this->team_id = intval($row['team_Id']);
 
       $this->team_id = $row['start'];
       $this->hours = floatval($row['hours']);
