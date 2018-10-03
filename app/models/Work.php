@@ -46,7 +46,7 @@ class Work
         $this->start,
         $start->hours,
         $this->comppletion_estimate
-        ])
+      ]);
 
         $this->id = $db->lastInsertID();
     }
@@ -54,7 +54,6 @@ class Work
     public static getAllWorkByTaskId(int $taskId) {
       //1. Connect to the database
       $db = new PDO(DB_SERVER, DB_USER, DB_PW);
-      var_dump($db);
 
       //2. Prepare query
       $sql ='SELECT * FROM Work WHERE task_id' ='?';
