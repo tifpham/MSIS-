@@ -48,11 +48,6 @@ class Work
         $this->comppletion_estimate
         ])
 
-        if(!sucess) {
-          //TODO:Better error handling
-          die ('Bad SQL on insert');
-        }
-
         $this->id = $db->lastInsertID();
     }
 
