@@ -51,7 +51,7 @@ class Work
         $this->id = $db->lastInsertID();
     }
 
-    public static getAllWorkByTaskId(int $taskId) {
+    public static getWorkByTaskId(int $taskId) {
       //1. Connect to the database
       $db = new PDO(DB_SERVER, DB_USER, DB_PW);
 
