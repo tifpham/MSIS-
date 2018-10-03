@@ -22,7 +22,8 @@ class Work
       //Calculate stop date
       $hours = floor ($this->hours);
       $mins = intval(($this-> hours - $hours) *60); //Take advantage of
-      $interval ='PT'. ($hours ? $hours. 'H' : '') . ($mins ? $mins. 'M')
+      $interval = 'PT'. ($hours ? $hours.'H' : '') . ($mins ? $mins.'M' : '');
+
 
       $date = new DateTime($this ->start);
       $this ->stop = $date->format('Y-m-d H:i:s');
