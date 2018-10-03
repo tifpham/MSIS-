@@ -9,6 +9,8 @@ class Team
     $this->name = $data['name'];
     $this->hourly_rate = floatval($data['hourly_rate']);
   }
+
+  //what will be on homework
   public static function fetchAll() {
     // 1. Connect to the database
     $db = new PDO(DB_SERVER, DB_USER, DB_PW);
