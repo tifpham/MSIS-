@@ -51,7 +51,7 @@ var tasksApp = new Vue({
         headers:{
           "Content-Type": "application/json; charset=utf-8",
         },
-        body: s //body data type must match "Content-Type header"
+        body: s //body data type must match "Content-Type header" [data sending as part of post]
       })
       .then( response => response.json() )
       .then( json => {this.work.push(json) }
