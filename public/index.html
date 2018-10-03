@@ -14,8 +14,6 @@ g
   <body>
 
     <main id="dashboard" class="container-fluid">
-     <h1>{{ name }}</h1>
-     <p><em>{{ short_description }}</em></p>
      <h1>{{ project.name }}</h1>
      <p><em>{{ project.short_description }}</em></p>
      <div class="row">
@@ -27,12 +25,11 @@ g
          <div class="row">
            <div class="col">
              <h2>Due date</h2>
-             <div class="ban">{{ pretty_target_date }}</div>
              <div class="ban">{{ pretty_date(project.target_date) }}</div>
            </div>
            <div class="col">
              <h2>Days Remaining</h2>
-              <div class="ban">{{ days_left }} days</div>
+              <div class="ban">{{ project.days_left }} days</div>
             </div>
           </div>
         </section>
