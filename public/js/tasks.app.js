@@ -54,7 +54,7 @@ var tasksApp = new Vue({
         body: s //body data type must match "Content-Type header" [data sending as part of post]
       })
       .then( response => response.json() )
-      .then( json => {this.work.push(json) }
+      .then( json => {this.work.push(json) })
       .catch( err => {
         console.error('WORK POST ERROR:');
         console.error(err);
