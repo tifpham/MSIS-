@@ -10,5 +10,5 @@ $teams = Team:: getAll();
 $json = json_encode($teams, JSON_PRETTY_PRINT);
 
 //3. Print
-header('Content-Type: application/json')
+header('Content-Type: application/json');
 echo $json;
