@@ -46,7 +46,7 @@ class Work
         $this->start,
         $start->hours,
         $this->comppletion_estimate
-        ]),
+        ])
 
         if(!sucess) {
           //TODO:Better error handling
