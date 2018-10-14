@@ -24,7 +24,7 @@ section .ban {
 }
 
 #effortChart {
-  height: 250px;
+  height: 150px;
 }
 
 #taskTable > tbody > tr {
