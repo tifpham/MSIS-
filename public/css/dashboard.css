@@ -23,6 +23,11 @@ section .ban {
   margin-top: 0;
 }
 
+#effortChart {
+  height: 250px;
+  
+}
+
 #taskTable > tbody > tr {
   border-left: 12px solid #eee;
   cursor: pointer;
