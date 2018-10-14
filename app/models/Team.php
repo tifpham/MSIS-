@@ -23,7 +23,6 @@ class Team
     $arr = [];
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
       //4a. for each row, make a new work object
-      print_r($row);
       $theTeam =  new Team($row);
       array_push($arr, $theTeam);
     }
