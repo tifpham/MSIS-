@@ -1,6 +1,6 @@
 <?php
 //require once --> if already
-require_once '../../app/common.php'
+//require_once '../../app/common.php'
 
 
 $work = new Work ($_POST);
