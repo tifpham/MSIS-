@@ -28,14 +28,14 @@ var tasksApp = new Vue({
   methods: {
     handleWorkForm(e) {
 
-      // TODO: Check validity
-      if (this.workSpan < 0) {
+      // TODO: Check validity in a better way
+      if (this.workSpan <= 0) {
         console.error('Cannot submit, invalid values');
         return;
       }
-      this.workForm.task_Id = this.taskId;
-      this.workForm.hours = this.workSpan;
+
       this.workForm.start_date = this.workForm.start + ' ' + this.workForm.start_time;
+      this.workForm.hours = this.workSpan;
 
       // Stop field not used by the API
     //  this.workForm.stop_date = this.workForm.stop + ' ' + this.workForm.stop_time;
@@ -96,36 +96,38 @@ var tasksApp = new Vue({
     }
   },
   created () {
-    // Populate workForm with default values
-    this.workForm = this.getEmptyWorkForm();
 
-    // Do data fetch
-    const url = new URL(window.location.href);
-    const taskId = url.searchParams.get('taskId');
-    console.log('Task: '+ taskId);
-    this.task.id = taskId;
+      // Do data fetch
+      const url = new URL(window.location.href);
+      const taskId = url.searchParams.get('taskId');
+      console.log('Task: '+ taskId);
+      this.task.id = taskId;
+  
+      if (!taskId) {
+        //TODO: Error? 404?
+        //e.g., window.location = '404.html';
+      }
 
-    if (!taskId) {
-      //TODO: Error? 404?
-      //e.g., window.location = '404.html';
+      // Populate workForm with default values
+      this.workForm = this.getEmptyWorkForm();
+
+      // TODO: Fetch task-specific data
+      // fetch('api/task?id=4')
+      fetch('api/work.php?taskId='+taskId)
+      .then( response => response.json() )
+      .then( json => {tasksApp.work = json} )
+      .catch( err => {
+        console.error('WORK FETCH ERROR:');
+        console.error(err);
+      })
+
+      // Fetch all teams, for the form
+      fetch('api/team.php')
+      .then( response => response.json() )
+      .then( json => {tasksApp.teamList = json} )
+      .catch( err => {
+        console.log('TEAM LIST ERROR:');
+        console.log(err);
+      })
     }
-
-    // TODO: Fetch task-specific data
-    // fetch('api/task?id=4')
-    fetch('api/work.php?taskId='+taskId)
-    .then( response => response.json() )
-    .then( json => {tasksApp.work = json} )
-    .catch( err => {
-      console.error('WORK FETCH ERROR:');
-      console.error(err);
-    })
-
-    fetch('api/team.php')
-    .then( response => response.json() )
-    .then( json => {tasksApp.teamList = json} )
-    .catch( err => {
-      console.log('TEAM LIST ERROR:');
-      console.log(err);
-    })
-  }
-})
+  })
