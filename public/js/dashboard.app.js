@@ -90,7 +90,7 @@ var dashboardApp = new Vue({
     formatWorkHours() {
       this.workHours.forEach(
         (entry, index, arr) => {
-          entry.date = Date.parse(entry.date); // Convert to ms since Jan 1, 1970 UTC
+          entry.date = Date.parse(entry.date); // Convert to miliseconds since Jan 1, 1970 UTC
           entry.hours = Number(entry.hours);
           entry.runningTotalHours = entry.hours +
             (index == 0 ? 0 : arr[index-1].runningTotalHours)
@@ -155,7 +155,7 @@ var dashboardApp = new Vue({
     }
   },
   created () {
-    // Get URL Param, projectId
+    // TODO:Get URL Param, projectId
     const url = new URL(window.location.href);
     const projectId = url.searchParams.get('projectId') || 0;
 
